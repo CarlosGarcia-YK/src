@@ -102,6 +102,14 @@ def process_file(uploaded_file):
                 # Show the first predictions
                 st.write("Predictions (first 10):")
                 st.write(predictions[:10])
+
+                # Show output image after processing
+                output_image_path = os.path.join(image_dir, 'output.png')
+                if os.path.exists(output_image_path):
+                    st.image(output_image_path, caption="Output Image", use_column_width=True)
+                else:
+                    st.error(f"Output image not found: {output_image_path}")
+
             else:
                 st.error(f'The CSV file must contain the following columns: {", ".join(required_columns)}.')
         except Exception as e:
@@ -114,7 +122,6 @@ st.markdown(f"""
   
     </div>
 """, unsafe_allow_html=True)
-
 
 # File uploader input
 uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
