@@ -2,4 +2,4 @@ streamlit
 pandas
 numpy
 base64
-tensorflow==2.12.0
+tensorflow
